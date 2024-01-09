@@ -1,9 +1,10 @@
-<div class="container d-flex justify-content-between">
-<%= link_to tables_path, class: 'btn btn-secondary mb-2' do %>
-  <i class="fas fa-home"></i> Main floor
-<% end %>
-</div>
-<div class="container">
+<section class="container d-flex justify-content-between">
+  <%= link_to tables_path, class: 'btn btn-secondary mb-2' do %>
+    <i class="fas fa-home"></i> Main floor
+  <% end %>
+</section>
+
+<section class="container">
   <div class="row">
     <% @tables.each do |table| %>
       <div class="col-md-4 mb-4">
@@ -13,11 +14,11 @@
             <p class="card-text">Customers <%= table.customer_number %></p>
             <h3 class="card-text">Status <%= table.status %></h3>
             <%= link_to table, class: 'btn btn-primary' do %>
-            <i class="fas fa-info-circle"></i> More details
+              <i class="fas fa-info-circle"></i> More details
             <% end %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-</div>
+</section>

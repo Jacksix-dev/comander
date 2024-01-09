@@ -1,0 +1,57 @@
+.container.d-flex.justify-content-between {
+  background-color: #f2c14e; /* Yellow background */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Restaurant table styling */
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  border: 2px solid #e0e0e0; /* Light gray border */
+  border-radius: 50%; /* Create a circular appearance */
+  overflow: hidden;
+  position: relative;
+}
+
+.card:before {
+  content: '';
+  display: block;
+  padding-top: 100%; /* Maintain a 1:1 aspect ratio for the circle */
+}
+
+.card-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background-color: #4CAF50; /* Green color for the button */
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
