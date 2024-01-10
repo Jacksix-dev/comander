@@ -8,10 +8,16 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @foods = Food.all
     @table = Table.find(params[:table_id])
     @order = Order.create(order_params)
+    @order.kitchen_id = 1
     @order.table_id = @table.id
     if @order.save
+      foods = params[:foods]
+      foods.each do |food|
+        SelectedFood.create(order: @order, food_id: food)
+      end
       redirect_to tables_path
     else
       render :new, status: :unprocessable_entity
@@ -22,7 +28,7 @@ class OrdersController < ApplicationController
 
   def order_params
 
-    params.require(:order).permit(:waiter_id, selected_food_ids: [])
+    params.require(:order).permit(:waiter_id)
 
   end
 end
