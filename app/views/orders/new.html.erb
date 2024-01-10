@@ -1,5 +1,8 @@
 <%= simple_form_for [@table, @order] do |f| %>
-  <%= f.input :selected_food_ids, collection: @foods, label: 'drink-food',input_html:{multiple:true} %>
   <%= f.input :waiter_id, collection: @waiter %>
+
+  <%= label_tag 'foods', 'Foods' %>
+  <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] }, multiple: true) %>
+
   <%= f.button :submit %>
 <% end %>
