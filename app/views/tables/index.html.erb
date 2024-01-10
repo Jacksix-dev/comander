@@ -5,20 +5,15 @@
 </section>
 
 <section class="container">
-  <div class="row">
+  <div class="fixed-table-container">
     <% @tables.each do |table| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Table <%= table.number %></h2>
-            <p class="card-text">Customers <%= table.customer_number %></p>
-            <h3 class="card-text">Status <%= table.status %></h3>
-            <%= link_to table, class: 'btn btn-primary' do %>
-              <i class="fas fa-info-circle"></i> More details
-            <% end %>
-          </div>
+      <%= link_to table_path(table), class: "card #{table_color_class(table)}" do %>
+        <div class="card-body">
+          <h2 class="card-title">Table <%= table.number %></h2>
+          <p class="card-text">Customers <%= table.customer_number %></p>
+          <h3 class="card-text">Status: <%= table.status %></h3>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </section>

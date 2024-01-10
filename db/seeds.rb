@@ -36,8 +36,8 @@ SelectedFood.destroy_all
     total_expended: 0,
     status:'empty')
 
-  Table.create(user_id:2, number: 2, customer_number: '', total_expended: 0,status:'empty')
-  Table.create(user_id:2, number: 3, customer_number: '', total_expended: 0,status:'empty')
+  Table.create(user_id:2, number: 2, customer_number: '', total_expended: 0,status:0)
+  Table.create(user_id:2, number: 3, customer_number: '', total_expended: 0,status:0)
   Table.create(user_id:2, number: 4, customer_number: '', total_expended: 0,status:'empty')
   Table.create(user_id:2, number: 5, customer_number: '', total_expended: 0,status:'empty')
   Table.create(user_id:2, number: 6, customer_number: '', total_expended: 0,status:'empty')

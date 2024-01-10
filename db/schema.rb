@@ -51,7 +51,7 @@ end
     t.integer "number"
     t.integer "customer_number"
     t.integer "total_expended"
-    t.string "status"
+    t.integer "status", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
