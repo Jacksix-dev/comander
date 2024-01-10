@@ -13,6 +13,9 @@
             <%= link_to edit_table_path, class: 'btn btn-primary' do %>
               <i class="fas fa-edit"></i> Edit
             <% end if current_user.id == @table.user_id %>
+            <%= link_to orders_new_table_path(@table), class: 'btn btn-warning' do %>
+              <i class="fas fa-edit"></i> Open Table
+            <% end if current_user.id == @table.user_id %>
           </div>
         </div>
       </div>
