@@ -59,7 +59,7 @@ SelectedFood.destroy_all
 Food.create(
   name: Faker::Food.dish,
   price:Faker::Number.decimal_part(digits: 2),
-  type:''
+  type:'dish'
 )
   end
 
@@ -67,7 +67,7 @@ Food.create(
     Food.create(
       name: Faker::Beer.brand,
       price:Faker::Number.decimal_part(digits: 2),
-      type:''
+      type:'drink'
     )
       end
 

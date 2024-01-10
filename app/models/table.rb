@@ -1,7 +1,9 @@
 class Table < ApplicationRecord
   has_many :orders
-  has_one :waiter, through: :orders
   belongs_to :user
+  has_one :waiter, through: :orders
+  has_one :kitchen, through: :orders
+
   validates :number, presence: true
   validates :status, inclusion: { in: %w(empty reserved available checkout)}
   validates :number, uniqueness: true
