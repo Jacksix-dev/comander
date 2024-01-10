@@ -1,12 +1,15 @@
 <div class="center-form mt-5">
-<%= simple_form_for @table do |f| %>
-  <%= f.input :customer_number, label: "Customers quantity", placeholder: "Enter quantity"%>
-   <%= f.input :status, label: "Status", placeholder: "Change Status"%>
-  <%= f.button :submit, class: 'btn btn-success' do %>
-    <i class="fas fa-check"></i> Save Changes
+  <%= simple_form_for @table do |f| %>
+    <%= f.input :customer_number, label: "Customers quantity", placeholder: "Enter quantity" %>
+
+    <!-- Use collection_select for the status field -->
+    <%= f.input :status, collection: Table.statuses.keys, label: "Status", prompt: "Select status" %>
+
+    <%= f.button :submit, class: 'btn btn-success' do %>
+      <i class="fas fa-check"></i> Save Changes
+    <% end %>
+    <%= link_to table_path, class: 'btn btn-warning' do %>
+      <i class="fas fa-times"></i> Cancel Edit
+    <% end %>
   <% end %>
-  <%= link_to table_path, class: 'btn btn-warning' do %>
-    <i class="fas fa-times"></i> Cancel Edit
-  <% end %>
-<% end %>
 </div>

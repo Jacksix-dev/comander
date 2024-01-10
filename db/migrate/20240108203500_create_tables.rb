@@ -4,7 +4,7 @@ class CreateTables < ActiveRecord::Migration[7.1]
       t.integer :number
       t.integer :customer_number
       t.integer :total_expended
-      t.string :status
+      t.integer :status, default: 0 
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end

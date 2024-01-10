@@ -9,11 +9,19 @@
   margin-top: 20px;
 }
 
+.fixed-table-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .card {
   border: 2px solid #e0e0e0; /* Light gray border */
   border-radius: 50%; /* Create a circular appearance */
   overflow: hidden;
-  position: relative;
+  margin: 20px; /* Adjust the margin as needed */
+  width: 280px; /* Set a fixed width */
+  height: 280px;
 }
 
 .card:before {
@@ -55,3 +63,24 @@
 .btn-primary:hover {
   background-color: #45a049; /* Darker green on hover */
 }
+
+.card.table-empty {
+  background-color: #ffffff; /* White for empty tables */
+}
+
+.card.table-reserved {
+  background-color: #ffcccb; /* Light red for reserved tables */
+}
+
+.card.table-available {
+  background-color: #98fb98; /* Light green for available tables */
+}
+
+.card.table-checkout {
+  background-color: #FFFF00; /* Light gray for tables with customers checking out */
+}
+
+.card.table-default {
+  background-color: #e0e0e0; /* Default color for unknown status */
+}
+

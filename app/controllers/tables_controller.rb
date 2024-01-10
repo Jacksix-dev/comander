@@ -1,7 +1,8 @@
 class TablesController < ApplicationController
   before_action :set_table, only:[:show, :edit , :update, :close]
+  helper_method :table_color_class
   def index
-    @tables = Table.all
+    @tables = Table.all.order(:id)
   end
 
   def show
@@ -33,5 +34,20 @@ class TablesController < ApplicationController
 
   def set_table
     @table = Table.find(params[:id])
+  end
+
+  def table_color_class(table)
+    case table.status
+    when 'empty'
+      'table-empty'
+    when 'reserved'
+      'table-reserved'
+    when 'available'
+      'table-available'
+    when 'checkout'
+      'table-checkout'
+    else
+      'table-default' # Default color if status is not recognized
+    end
   end
 end
