@@ -19,11 +19,16 @@ class TablesController < ApplicationController
   def checkout
     @orders = @table.orders.includes(:selected_foods).order(created_at: :desc)
     @total_prices = @orders.map { |order| order.selected_foods.joins(:food).sum('foods.price') }
-
-
   end
 
   def close
+    orders = @table.orders
+    orders.each do |order|
+      order.selected_foods.destroy_all
+    end
+    orders.destroy_all
+    @table.update!(customer_number: 0, status: 'empty')
+    redirect_to tables_path, notice: 'Table closed successfully.'
   end
 
   def user_tables
