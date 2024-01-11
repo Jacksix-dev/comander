@@ -1,8 +1,6 @@
 <div class="center-form mt-5">
   <%= simple_form_for @table do |f| %>
     <%= f.input :customer_number, label: "Customers quantity", placeholder: "Enter quantity" %>
-
-    <!-- Use collection_select for the status field -->
     <%= f.input :status, collection: Table.statuses.keys, label: "Status", prompt: "Select status" %>
 
     <%= f.button :submit, class: 'btn btn-success' do %>

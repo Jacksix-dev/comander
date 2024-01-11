@@ -9,11 +9,18 @@ class TablesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    @table.update!(table_params)
+  # Assuming @table is set in a before_action
+  if @table.update(table_params)
+    # Successfully updated
     redirect_to @table
+  else
+    # Validation failed, render the edit form again with errors
+    render :edit
+  end
   end
 
   def checkout
@@ -51,8 +58,8 @@ class TablesController < ApplicationController
       'table-empty'
     when 'reserved'
       'table-reserved'
-    when 'available'
-      'table-available'
+    when 'full'
+      'table-full'
     when 'checkout'
       'table-checkout'
     else

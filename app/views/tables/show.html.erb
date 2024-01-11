@@ -23,10 +23,8 @@
           <%= link_to checkout_table_path(@table), class: 'btn btn-success' do %>
             <i class="fas fa-cash-register"></i> Checkout
           <% end %>
-
         <% end %>
 <%= link_to 'Close Table', close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-
       </div>
     </div>
   </section>

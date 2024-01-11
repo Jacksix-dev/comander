@@ -68,15 +68,15 @@
 }
 
 .card.table-empty {
-  background-color: #ffffff; /* White for empty tables */
+  background-color: lightgreen; /* White for empty tables */
 }
 
 .card.table-reserved {
-  background-color: #ffcccb; /* Light red for reserved tables */
+  background-color: lightblue; /* Light red for reserved tables */
 }
 
-.card.table-available {
-  background-color: #98fb98; /* Light green for available tables */
+.card.table-full {
+  background-color: #ffcccb; /* Light green for available tables */
 }
 
 .card.table-checkout {
