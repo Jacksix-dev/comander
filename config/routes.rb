@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     #end
     #resources :orders, only: [:create]
   end
-
+  resources :orders, only: [:index]
   # Resourceful routes for orders
   #resources :orders, only: [:index, :edit, :update]
 

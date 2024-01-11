@@ -1,0 +1,14 @@
+
+<% @orders.each do |order| %>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+   <% order.foods.each do |food| %>
+   <% if food.type == 'dish' %>
+   <h5 class="card-title"><%= food.name %></h5>
+  <% end %>
+  <% end %>
+  </div>
+</div>
+
+<% end %>

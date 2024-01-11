@@ -3,6 +3,8 @@
 
   <%= label_tag 'foods', 'Foods' %>
   <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] }, multiple: true) %>
+  <%= label_tag 'foods', 'Drink' %>
+  <%= select_tag 'foods[]', options_for_select(@drinks.map { |drink| [drink.name, drink.id] }, multiple: true) %>
 
   <%= f.button :submit %>
 <% end %>

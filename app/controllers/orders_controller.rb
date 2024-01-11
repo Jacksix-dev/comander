@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+  end
+
   def new
     @table = Table.find(params[:table_id])
     @order = Order.new
-    @foods = Food.all
+    @foods = Food.where(type: 'dish')
+    @drinks = Food.where(type: 'drink')
     @waiter = Waiter.all
     @kitchen = Kitchen.first
   end
