@@ -1,5 +1,5 @@
 class TablesController < ApplicationController
-  before_action :set_table, only:[:show, :edit , :update, :close]
+  before_action :set_table, only:[:show, :edit , :update, :close, :checkout]
   helper_method :table_color_class
   def index
     @tables = Table.all.order(:id)
@@ -17,6 +17,10 @@ class TablesController < ApplicationController
   end
 
   def checkout
+    @orders = @table.orders.includes(:selected_foods).order(created_at: :desc)
+    @total_prices = @orders.map { |order| order.selected_foods.joins(:food).sum('foods.price') }
+
+
   end
 
   def close
