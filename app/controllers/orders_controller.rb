@@ -1,8 +1,19 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.all
+  end
+  def edit
+
+  @table = Table.find(params[:table_id])
+  @orders = @table.orders.includes(:foods)
+  @waiter = @orders.first.waiter
+  end
+
   def new
     @table = Table.find(params[:table_id])
     @order = Order.new
-    @foods = Food.all
+    @foods = Food.where(type: 'dish')
+    @drinks = Food.where(type: 'drink')
     @waiter = Waiter.all
     @kitchen = Kitchen.first
   end
@@ -25,10 +36,11 @@ class OrdersController < ApplicationController
   end
 
   private
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
   def order_params
-
     params.require(:order).permit(:waiter_id)
-
   end
 end

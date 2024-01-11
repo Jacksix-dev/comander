@@ -16,13 +16,16 @@
 }
 
 .card {
-  border: 2px solid #e0e0e0; /* Light gray border */
-  border-radius: 50%; /* Create a circular appearance */
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
   overflow: hidden;
-  margin: 20px; /* Adjust the margin as needed */
-  width: 280px; /* Set a fixed width */
+  width: 280px;
   height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .card:before {
   content: '';
@@ -59,21 +62,32 @@
   font-size: 1.2em;
   transition: background-color 0.3s;
 }
+.btn-facundo {
+  background-color: #4472d7; /* Green color for the button */
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
 
 .btn-primary:hover {
   background-color: #45a049; /* Darker green on hover */
 }
 
 .card.table-empty {
-  background-color: #ffffff; /* White for empty tables */
+  background-color: lightgreen; /* White for empty tables */
 }
 
 .card.table-reserved {
-  background-color: #ffcccb; /* Light red for reserved tables */
+  background-color: lightblue; /* Light red for reserved tables */
 }
 
-.card.table-available {
-  background-color: #98fb98; /* Light green for available tables */
+.card.table-full {
+  background-color: #ffcccb; /* Light green for available tables */
 }
 
 .card.table-checkout {
@@ -83,4 +97,3 @@
 .card.table-default {
   background-color: #e0e0e0; /* Default color for unknown status */
 }
-
