@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_09_143533) do
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_selected_foods_on_food_id"
     t.index ["order_id"], name: "index_selected_foods_on_order_id"
-end
+  end
 
   create_table "tables", force: :cascade do |t|
     t.integer "number"
