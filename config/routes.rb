@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tables, only: [:index, :show, :edit, :update] do
-    resources :orders, only: [:create, :new]
+    resources :orders, only: [:create, :new, :index]
     #member do
   # get 'orders/new', to: 'orders#new'
     # patch 'checkout', to: 'tables#checkout'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     #end
     #resources :orders, only: [:create]
   end
-
+  resources :orders, only: [:index]
   # Resourceful routes for orders
   #resources :orders, only: [:index, :edit, :update]
 
