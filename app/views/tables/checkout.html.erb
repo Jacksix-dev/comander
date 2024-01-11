@@ -1,0 +1,22 @@
+<section class="container">
+      <h4 class="mt-4">Orders:</h4>
+      <% @orders.each_with_index do |order, index| %>
+        <p>Order ID: <%= order.id %></p>
+        <p>Waiter: <%= order.waiter.name %></p>
+        <h5>Selected Foods:</h5>
+        <ul>
+          <% order.selected_foods.each do |selected_food| %>
+            <li><%= selected_food.food.name %>
+          <% end %>
+        </ul>
+        <p>Total Price: <%= number_to_currency(@total_prices[index]) %></p>
+        <hr class="my-4">
+      <% end %>
+      <h4>Total Sum of Prices: <%= number_to_currency(@total_prices.sum) %></h4>
+
+      <%= link_to tables_path, class: 'btn btn-primary mt-4' do %>
+        <i class="fas fa-chevron-left"></i> Back to List
+      <% end %>
+    </div>
+  </div>
+</section>

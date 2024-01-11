@@ -1,22 +1,32 @@
-<div class='container'>
+<% if @table %>
+  <div class='container'>
     <%= link_to tables_path, class: 'btn btn-primary mb-2 text-center' do %>
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
   </div>
-  <div class='container d-flex justify-content-center'>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">Table <%= @table.number %></h2>
-            <p class="card-text">Customers <%= @table.customer_number %></p>
-            <h3 class="card-text">Status <%= @table.status %></h3>
-            <%= link_to edit_table_path, class: 'btn btn-primary' do %>
-              <i class="fas fa-edit"></i> Edit
-            <% end if current_user.id == @table.user_id %>
-            <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
-              <i class="fas fa-edit"></i> Open Table
-            <% end if current_user.id == @table.user_id %>
-          </div>
-        </div>
+
+  <section class='container'>
+    <div class="card <%= table_color_class(@table) %> mx-auto my-5">
+      <div class="card-body">
+        <h2 class="card-title">Table <%= @table.number %></h2>
+        <p class="card-text">Customers <%= @table.customer_number %></p>
+        <h3 class="card-text">Status <%= @table.status %></h3>
+        <%= link_to edit_table_path, class: 'btn btn-primary' do %>
+          <i class="fas fa-edit"></i> Edit
+        <% end if current_user.id == @table.user_id %>
+
+        <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
+          <i class="fas fa-edit"></i> Open Table
+        <% end if current_user.id == @table.user_id %>
+
+        <% if @table.orders.any? %>
+          <%= link_to checkout_table_path(@table), class: 'btn btn-success' do %>
+            <i class="fas fa-cash-register"></i> Checkout
+          <% end %>
+        <% end %>
       </div>
-</div>
+    </div>
+  </section>
+<% else %>
+  <p>Table not found.</p>
+<% end %>

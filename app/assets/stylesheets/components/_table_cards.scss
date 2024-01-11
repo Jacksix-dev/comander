@@ -16,13 +16,16 @@
 }
 
 .card {
-  border: 2px solid #e0e0e0; /* Light gray border */
-  border-radius: 50%; /* Create a circular appearance */
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
   overflow: hidden;
-  margin: 20px; /* Adjust the margin as needed */
-  width: 280px; /* Set a fixed width */
+  width: 280px;
   height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 
 .card:before {
   content: '';
@@ -83,4 +86,3 @@
 .card.table-default {
   background-color: #e0e0e0; /* Default color for unknown status */
 }
-
