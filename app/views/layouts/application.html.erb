@@ -10,9 +10,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-1">
+          <%= render "shared/navbar" %>
+          <!-- Additional sidebar content goes here -->
+        </div>
 
-    <%= yield %>
+        <div class="col-lg-11 px-0">
+          <%= render "shared/flashes" %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
