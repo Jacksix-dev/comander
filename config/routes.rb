@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tables, only: [:index, :show, :edit, :update] do
+    member do
+      match 'close', to: 'tables#close', via: [:get, :post]
+    end
     resources :orders, only: [:create, :new]
     member do
       get 'checkout', to: 'tables#checkout'

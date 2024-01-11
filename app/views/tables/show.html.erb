@@ -5,8 +5,8 @@
     <% end %>
   </div>
 
-  <section class='container'>
-    <div class="card <%= table_color_class(@table) %> mx-auto my-5">
+  <section class=''>
+    <div class=" <%= table_color_class(@table) %> mx-auto my-5">
       <div class="card-body">
         <h2 class="card-title">Table <%= @table.number %></h2>
         <p class="card-text">Customers <%= @table.customer_number %></p>
@@ -23,7 +23,10 @@
           <%= link_to checkout_table_path(@table), class: 'btn btn-success' do %>
             <i class="fas fa-cash-register"></i> Checkout
           <% end %>
+
         <% end %>
+<%= link_to 'Close Table', close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+
       </div>
     </div>
   </section>
