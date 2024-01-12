@@ -1,6 +1,6 @@
 
 <%= simple_form_for [@table, @order] do |f| %>
-  <%= f.association :waiter, collection: @waiter, input_html: { value: @waiter_default }%>
+  <%= f.association :waiter, collection: @waiter, selected: @waiter_default%>
   <%= label_tag 'foods', 'Foods' %>
   <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
   <%= label_tag 'foods', 'Drink' %>

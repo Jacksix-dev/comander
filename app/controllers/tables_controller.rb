@@ -5,8 +5,13 @@ class TablesController < ApplicationController
     @tables = Table.all.order(:id)
   end
 
+  def all_orders
+    @table = Table.find(params[:id])
+    @orders = @table.orders
+  end
+
   def show
-    @editable = false
+
   end
 
   def edit
