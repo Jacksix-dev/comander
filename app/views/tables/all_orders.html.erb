@@ -1,0 +1,11 @@
+
+<% @orders.each do |order| %>
+
+  <h5>Order ID: <%= order.id %></h5>
+  <ul>
+    <% order.foods.each do |food| %>
+      <li><%= food.name %></li>
+    <% end %>
+    <%= link_to 'Edit', edit_table_order_path(order) %>
+  </ul>
+<% end %>

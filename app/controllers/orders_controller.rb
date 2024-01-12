@@ -5,7 +5,8 @@ class OrdersController < ApplicationController
   def edit
   @table = Table.find(params[:table_id])
   @orders = @table.orders.includes(:foods)
-  @waiter = @orders.first.waiter
+
+  @selected_foods = SelectedFood.where(order_id:params[:id] )
   end
 
   def new
@@ -19,6 +20,9 @@ class OrdersController < ApplicationController
   end
 
   def create
+
+
+
     @foods = Food.all
     @table = Table.find(params[:table_id])
     @order = Order.create(order_params)
