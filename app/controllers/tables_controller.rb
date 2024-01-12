@@ -6,6 +6,7 @@ class TablesController < ApplicationController
   end
 
   def show
+    @editable = false
   end
 
   def edit
