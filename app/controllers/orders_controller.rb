@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     @foods = Food.where(type: 'dish')
     @drinks = Food.where(type: 'drink')
     @waiter = Waiter.all
+    @waiter_default = Waiter.first.id
     @kitchen = Kitchen.first
   end
 
