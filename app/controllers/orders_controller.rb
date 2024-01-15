@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
   def edit
-
   @table = Table.find(params[:table_id])
   @order = @table.orders.find(params[:id])
   @orders = @table.orders.includes(:foods)
@@ -49,7 +48,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.selected_foods.destroy_all
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
   def set_order
     @order = Order.find(params[:id])
   end

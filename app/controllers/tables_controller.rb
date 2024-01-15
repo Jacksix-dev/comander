@@ -15,18 +15,11 @@ class TablesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-  # Assuming @table is set in a before_action
-  if @table.update(table_params)
-    # Successfully updated
+    @table.update!(table_params)
     redirect_to @table
-  else
-    # Validation failed, render the edit form again with errors
-    render :edit
-  end
   end
 
   def checkout
