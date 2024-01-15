@@ -10,11 +10,11 @@
 <section class="container">
   <div class="fixed-table-container">
     <% @tables.each do |table| %>
-      <%= link_to table_path(table), class: "card #{table_color_class(table)}" do %>
-        <div class="card-body">
-          <h2 class="card-title">Table <%= table.number %></h2>
-          <p class="card-text">Customers <%= table.customer_number %></p>
-          <h3 class="card-text">Status: <%= table.status %></h3>
+      <%= link_to table_path(table), class: "card-circle #{table_color_class(table)}" do %>
+        <div class="card-circle-body">
+          <h2 class="card-circle-title">Table <%= table.number %></h2>
+          <p class="card-circle-text">Customers <%= table.customer_number %></p>
+          <h3 class="card-circle-text">Status: <%= table.status %></h3>
         </div>
       <% end %>
     <% end %>

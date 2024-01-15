@@ -1,5 +1,5 @@
 .container.d-flex.justify-content-between {
-  background-color: #f2c14e; /* Yellow background */
+  background-color: #CAE9FF; /* Yellow background */
   padding: 10px;
   text-align: center;
 }
@@ -15,7 +15,8 @@
   justify-content: space-around;
 }
 
-.card {
+.card-circle {
+  position: relative;
   border: 2px solid #e0e0e0;
   border-radius: 50%;
   overflow: hidden;
@@ -24,31 +25,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
 
-.card:before {
+.card-circle:before {
   content: '';
   display: block;
-  padding-top: 100%; /* Maintain a 1:1 aspect ratio for the circle */
+  padding-top: 100%; 
 }
 
-.card-body {
+.card-circle-body {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  margin: 10px;
 }
-
-.card-title {
+.card-circle-title {
   font-size: 1.5em;
   margin-bottom: 10px;
+  color: black;
 }
 
-.card-text {
+.card-circle-text {
   font-size: 1.2em;
   margin-bottom: 15px;
+  color: black;
+
 }
 
 .btn-primary {
@@ -78,22 +83,22 @@
   background-color: #45a049; /* Darker green on hover */
 }
 
-.card.table-empty {
+.card-circle.table-empty {
   background-color: lightgreen; /* White for empty tables */
 }
 
-.card.table-reserved {
+.card-circle.table-reserved {
   background-color: lightblue; /* Light red for reserved tables */
 }
 
-.card.table-full {
-  background-color: #ffcccb; /* Light green for available tables */
+.card-circle.table-full {
+  background-color: #FA4C58; /* Light green for available tables */
 }
 
-.card.table-checkout {
-  background-color: #FFFF00; /* Light gray for tables with customers checking out */
+.card-circle.table-checkout {
+  background-color: #FFEA00; /* Light gray for tables with customers checking out */
 }
 
-.card.table-default {
+.card-circle.table-default {
   background-color: #e0e0e0; /* Default color for unknown status */
 }
