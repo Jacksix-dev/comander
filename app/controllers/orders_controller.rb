@@ -48,6 +48,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update_status
+    @order = Order.find(params[:id])
+    @order.status = "done"
+    @order.save
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: "Orden realizada con exito" }
+      format.json { head :no_content }
+    end
+  end
   def destroy
     @order = Order.find(params[:id])
     @order.selected_foods.destroy_all
@@ -65,7 +74,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:waiter_id)
+    params.require(:order).permit(:waiter_id, :status)
   end
 
   def edit_order_params

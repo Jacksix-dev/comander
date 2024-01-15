@@ -4,17 +4,24 @@
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
   </div>
-
+<%= form_with(model: @table, url: table_path(@table), method: :patch, class: 'customer-status-form', data: { controller: 'customer-counter' }) do |f| %>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="customer-count-label">Customers</span>
+    <%= f.text_field :customer_number, type: 'number', class: 'form-control', id: 'customer-count-input', min: 0, data: { target: 'customer-counter.countInput' } %>
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-secondary" data-action="click->customer-counter#increment">
+        <i class="fas fa-plus"></i>
+      </button>
+      <button type="button" class="btn btn-outline-secondary" data-action="click->customer-counter#decrement">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <%= f.label :status, class: 'form-label' %>
+  <%= f.select :status, Table.statuses.keys, {}, class: 'form-control' %>
+  <%= f.button :submit, class: 'btn btn-primary', value: 'Update' %>
+<% end %>
   <section class=''>
-    <div class=" <%= table_color_class(@table) %> mx-auto my-5">
-      <div class="card-body">
-        <h2 class="card-title">Table <%= @table.number %></h2>
-        <p class="card-text">Customers <%= @table.customer_number %></p>
-        <h3 class="card-text">Status <%= @table.status %></h3>
-        <%= link_to edit_table_path, class: 'btn btn-primary' do %>
-          <i class="fas fa-edit"></i> Edit
-        <% end if current_user.id == @table.user_id %>
-
         <% if @table.orders.any? %>
           <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
           <i class="fas fa-edit"></i> Add Order
