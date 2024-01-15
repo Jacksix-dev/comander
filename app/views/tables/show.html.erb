@@ -3,6 +3,9 @@
     <%= link_to tables_path, class: 'btn btn-primary mb-2 text-center' do %>
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
+    <%= link_to table_path(@table.id), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
+      <i class="fas fa-chevron-left"></i> Delete Table
+    <% end %>
   </div>
 <%= form_with(model: @table, url: table_path(@table), method: :patch, class: 'customer-status-form', data: { controller: 'customer-counter' }) do |f| %>
   <div class="input-group mb-3">

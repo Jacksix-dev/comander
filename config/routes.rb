@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "tables#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :tables, only: [:index, :show, :edit, :update] do
+  resources :tables, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
     member do
       match 'close', to: 'tables#close', via: [:get, :post]
     end

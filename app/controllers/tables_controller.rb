@@ -1,5 +1,5 @@
 class TablesController < ApplicationController
-  before_action :set_table, only:[:show, :edit , :update, :close, :checkout]
+  before_action :set_table, only:[:show, :edit , :update, :close, :checkout, :destroy]
   helper_method :table_color_class
   def index
     @tables = Table.all.order(:id)
@@ -8,6 +8,25 @@ class TablesController < ApplicationController
   def all_orders
     @table = Table.find(params[:id])
     @orders = @table.orders
+  end
+  def new
+    @table = Table.new
+  end
+
+  def create
+    @table = Table.new(table_params)
+    @table.user_id = current_user.id
+    if @table.save
+
+      redirect_to tables_path, notice: 'Table was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @table.delete
+    redirect_to tables_path, notice: 'Table was deleted.'
   end
 
   def show
@@ -45,7 +64,7 @@ class TablesController < ApplicationController
   private
 
   def table_params
-    params.require(:table).permit(:customer_number, :status)
+    params.require(:table).permit(:customer_number, :status, :number)
   end
 
   def set_table
