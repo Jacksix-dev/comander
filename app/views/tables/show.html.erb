@@ -1,9 +1,10 @@
 <% if @table %>
-  <div class='container'>
+<div class='container mt-5'>
+  <div class='table_container d-flex justify-content-between'>
     <%= link_to tables_path, class: 'btn btn-primary mb-2 text-center' do %>
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
-    <%= link_to table_path(@table.id), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
+    <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
       <i class="fas fa-chevron-left"></i> Delete Table
     <% end %>
   </div>
@@ -22,9 +23,9 @@
   </div>
   <%= f.label :status, class: 'form-label' %>
   <%= f.select :status, Table.statuses.keys, {}, class: 'form-control' %>
-  <%= f.button :submit, class: 'btn btn-primary', value: 'Update' %>
+  <%= f.button :submit, class: 'btn btn-primary mb-3 mt-3', value: 'Update' %>
 <% end %>
-  <section class=''>
+  <section class='buttons-container d-flex justify-content-between '>
         <% if @table.orders.any? %>
           <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
           <i class="fas fa-edit"></i> Add Order
@@ -42,7 +43,8 @@
         <% end %>
 
         <%= link_to 'Close Table', close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-            <h1>Orders</h1>
+    </section>
+            <h1 class='text-center'>Orders</h1>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
             <% order.selected_foods.each do |selected_food| %>
@@ -62,6 +64,7 @@
       </div>
     </div>
   </section>
+</div>
 <% else %>
   <p>Table not found.</p>
 <% end %>
