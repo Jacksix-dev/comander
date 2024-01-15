@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :tables, only: [:index, :show, :edit, :update] do
     member do
       match 'close', to: 'tables#close', via: [:get, :post]
-
     end
     resources :orders, only: [:create, :new, :edit]
     member do
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :destroy]
   get 'tables/:id/all_orders', to: 'tables#all_orders', as: :all_orders
-
+  put 'orders/:id/update_status', to: 'orders#update_status', as: :update_status
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
