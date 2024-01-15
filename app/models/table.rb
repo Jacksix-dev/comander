@@ -27,5 +27,5 @@ class Table < ApplicationRecord
       errors.add(:customer_number, "must be greater than 0 for 'full' or 'checkout' status")
     end
   end
-  
+
 end

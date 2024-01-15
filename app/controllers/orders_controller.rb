@@ -5,10 +5,19 @@ class OrdersController < ApplicationController
   def edit
 
   @table = Table.find(params[:table_id])
+  @order = @table.orders.find(params[:id])
   @orders = @table.orders.includes(:foods)
 
   @selected_foods = SelectedFood.where(order_id:params[:id] )
   end
+
+  def table_orders
+
+    @table = Table.find(params[:table_id])
+    @orders = @table.orders.includes(:foods)
+
+    @selected_foods = SelectedFood.where(order_id:params[:id] )
+    end
 
   def new
     @table = Table.find(params[:table_id])
