@@ -1,14 +1,8 @@
-<%= @order %>
-
-
 <div class="center-form mt-5">
-  <%= simple_form_for @order do |f| %>
-  <%= f.association :waiter, collection: @waiter, selected: @waiter_default%>
+  <%= simple_form_for [@table, @order] do |f| %>
+    <%= f.association :waiter, collection: @waiter, selected: @waiter_default%>
     <%= f.button :submit, class: 'btn btn-success' do %>
       <i class="fas fa-check"></i> Save Changes
-    <% end %>
-    <%= link_to table_path(@table), class: 'btn btn-warning' do %>
-      <i class="fas fa-times"></i> Cancel Edit
     <% end %>
   <% end %>
 </div>

@@ -35,13 +35,17 @@
             <h1>Orders</h1>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
-            <% order.foods.each do |food| %>
+            <% order.selected_foods.each do |selected_food| %>
                 <h5 class="card-title">
-                  <%= food.name %>
+                  <%= selected_food.food.name %>
+                  <%= link_to "Borrar", selected_food_path(selected_food), data: { turbo_method: :delete } %>
                 </h5>
-
             <% end %>
-            <%= link_to 'Edit Order', edit_table_order_path(@table), class: 'btn btn-facundo ' %>
+            <%= simple_form_for [order, SelectedFood.new] do |f| %>
+              <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
+              <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
+              <%= f.submit "Add Food", class: 'btn btn-facundo' %>
+            <% end %>
           <% end %>
 
         <% end %>

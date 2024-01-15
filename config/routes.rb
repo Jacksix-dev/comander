@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       get 'checkout', to: 'tables#checkout'
     end
   end
-  resources :orders, only: [:index, :destroy]
+  resources :orders, only: [:index, :destroy], shallow: true do
+    resources :selected_foods, only: [:create, :destroy]
+  end
   get 'tables/:id/all_orders', to: 'tables#all_orders', as: :all_orders
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

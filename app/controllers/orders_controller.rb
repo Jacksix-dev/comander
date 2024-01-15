@@ -8,13 +8,13 @@ class OrdersController < ApplicationController
   @orders = @table.orders.includes(:foods)
 
   @selected_foods = SelectedFood.where(order_id:params[:id] )
+
   end
 
   def table_orders
 
     @table = Table.find(params[:table_id])
     @orders = @table.orders.includes(:foods)
-
     @selected_foods = SelectedFood.where(order_id:params[:id] )
     end
 
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   def create
 
 
-
+    @drinks = Food.where(type: 'drink')
     @foods = Food.all
     @table = Table.find(params[:table_id])
     @order = Order.create(order_params)
@@ -66,5 +66,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:waiter_id)
+  end
+
+  def edit_order_params
+    params.require(:order).permit()
   end
 end
