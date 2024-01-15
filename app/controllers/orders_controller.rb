@@ -7,16 +7,19 @@ class OrdersController < ApplicationController
   @order = @table.orders.find(params[:id])
   @orders = @table.orders.includes(:foods)
 
-  @selected_foods = SelectedFood.where(order_id:params[:id] )
+  @selected_foods = SelectedFood.where(order_id: params[:id])
+  end
 
+  def orders_show
+    @orders = Order.all
+    @total_amount = @orders.sum { |order| order.foods.sum(&:price) }
   end
 
   def table_orders
-
     @table = Table.find(params[:table_id])
     @orders = @table.orders.includes(:foods)
-    @selected_foods = SelectedFood.where(order_id:params[:id] )
-    end
+    @selected_foods = SelectedFood.where(order_id: params[:id])
+  end
 
   def new
     @table = Table.find(params[:table_id])
@@ -29,8 +32,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
-
     @drinks = Food.where(type: 'drink')
     @foods = Food.all
     @table = Table.find(params[:table_id])
@@ -57,6 +58,7 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def destroy
     @order = Order.find(params[:id])
     @order.selected_foods.destroy_all
@@ -66,7 +68,6 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
   private
 
   def set_order
@@ -78,6 +79,6 @@ class OrdersController < ApplicationController
   end
 
   def edit_order_params
-    params.require(:order).permit()
+    params.require(:order).permit
   end
 end

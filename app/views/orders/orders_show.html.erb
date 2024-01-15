@@ -1,0 +1,17 @@
+<h1>Total Orders of the Day</h1>
+
+<% @orders.each do |order| %>
+  <p>Waiter: <%= order.waiter.name %></p>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <% order.foods.each do |food| %>
+        <h5 class="card-title">
+          <%= food.name %>
+          <%= number_to_currency(food.price, unit: '$', precision: 2) %>
+        </h5>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<p>Total Amount of Orders of the Day: <%= number_to_currency(@total_amount, unit: '$', precision: 2) %></p>
