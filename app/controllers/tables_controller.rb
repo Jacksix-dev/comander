@@ -11,6 +11,8 @@ class TablesController < ApplicationController
   end
 
   def show
+    @foods = Food.where(type: 'dish')
+    @drinks = Food.where(type: 'drink')
   end
 
   def edit
