@@ -20,19 +20,19 @@
   border: 2px solid #e0e0e0;
   border-radius: 50%;
   overflow: hidden;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px;
+  text-align: center;
 }
-
 
 .card-circle:before {
   content: '';
   display: block;
-  padding-top: 100%; 
+  padding-top: 100%;
 }
 
 .card-circle-body {
@@ -40,20 +40,24 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
+  box-sizing: border-box;
   text-align: center;
-  margin: 10px;
 }
+
+.card-circle-title,
+.card-circle-text {
+  color: black;
+}
+
 .card-circle-title {
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: black;
 }
 
 .card-circle-text {
   font-size: 1.2em;
-  margin-bottom: 15px;
-  color: black;
-
+  margin-bottom: 10px;
 }
 
 .btn-primary {
@@ -82,21 +86,25 @@
 .btn-primary:hover {
   background-color: #45a049; /* Darker green on hover */
 }
-
+.card-circle:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a subtle glow effect */
+  transition-duration: 0.3s;
+}
 .card-circle.table-empty {
-  background-color: lightgreen; /* White for empty tables */
+  background: linear-gradient(45deg,#2ed8b6,#59e0c5); /* White for empty tables */
 }
 
 .card-circle.table-reserved {
-  background-color: lightblue; /* Light red for reserved tables */
+  background: linear-gradient(45deg,#4099ff,#73b4ff); /* Light red for reserved tables */
 }
 
 .card-circle.table-full {
-  background-color: #FA4C58; /* Light green for available tables */
+  background: linear-gradient(45deg,#FF5370,#ff869a);; /* Light green for available tables */
 }
 
 .card-circle.table-checkout {
-  background-color: #FFEA00; /* Light gray for tables with customers checking out */
+  background: linear-gradient(45deg,#FFB64D,#ffcb80); /* Light gray for tables with customers checking out */
 }
 
 .card-circle.table-default {
