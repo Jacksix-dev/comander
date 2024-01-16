@@ -1,3 +1,40 @@
+
+<style>
+  .card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .btn-custom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .btn-custom:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<div class="d-flex flex-row">
+  <% @orders.each do |order| %>
+    <% if order.status == "pending" %>
+      <div class="card" style="width: 18rem; margin-right: 10px; border-radius: 15px;">
+        <div class="card-body text-center" style="border-radius: 15px;">
+          <% order.foods.each do |food| %>
+            <% if food.type == 'dish' %>
+              <h5 class="card-title text-center">
+                <%= food.name %>
+              </h5>
+            <% end %>
+          <% end %>
+          <div class="text-center">
+            <%= button_to order.status, update_status_path(order), method: :put, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-success btn-custom" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
 <div class="row p-3 m-3 ">
     <% @orders.each do |order| %>
       <% if order.status == "pending" %>
