@@ -49,24 +49,17 @@
             <h1 class='text-center mt-4 mb-4'>Orders</h1>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
-            <% food_counts = {} %>
-            <% order.selected_foods.each do |selected_food| %>
-              <% if food_counts.key?(selected_food.food_id) %>
-                <% food_counts[selected_food.food_id] += 1 %>
-              <% else %>
-                <% food_counts[selected_food.food_id] = 1 %>
-              <% end %>
+            <% food_counts = order.selected_foods.group(:food_id).count %>
+            <% food_counts.each do |food_id, count| %>
+              <% food = Food.find(food_id) %>
+              <% last_selected_food = order.selected_foods.where(food: food).last %>
+              <p>
+                <span>
+                  <%= food.name %>: <%= count %>
+                </span>
+                <%= link_to "-1", selected_food_path(last_selected_food), data: { turbo_method: :delete } %>
+              </p>
             <% end %>
-
-              <#% food_counts.each do |food, quantity|  %>
-                <div class="show-orders-container d-flex justify-content-between">
-                  <#%= selected_food.food.name %>
-                  <#%= link_to selected_food_path(selected_food), data: { turbo_method: :delete } do %>
-                  <i class="btn fa-regular fa-circle-xmark"></i>
-                </div>
-              <#% end %>
-
-
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
               <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
               <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
