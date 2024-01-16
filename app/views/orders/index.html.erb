@@ -1,66 +1,25 @@
-
-<style>
-  .card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .btn-custom {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-  }
-
-  .btn-custom:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-</style>
-
 <div class="d-flex flex-row">
+  <% order_counter = 0 %>
   <% @orders.each do |order| %>
     <% if order.status == "pending" %>
-      <div class="card" style="width: 18rem; margin-right: 10px; border-radius: 15px;">
-        <div class="card-body text-center" style="border-radius: 15px;">
-          <% order.foods.each do |food| %>
-            <% if food.type == 'dish' %>
-              <h5 class="card-title text-center">
-                <%= food.name %>
-              </h5>
+      <% order_counter += 1 %>
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card" style="margin-right: 10px;">
+          <div class="card-block text-center">
+            <h6 class="m-b-20">Orden #<%= order_counter %></h6>
+            <% order.foods.each do |food| %>
+              <% if food.type == 'dish' %>
+                <h5 class="card-title text-center">
+                  <%= food.name %>
+                </h5>
+              <% end %>
             <% end %>
-          <% end %>
-          <div class="text-center">
-            <%= button_to order.status, update_status_path(order), method: :put, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-success btn-custom" %>
+            <div class="text-center">
+              <%= button_to order.status, update_status_path(order), method: :put, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-success btn-custom" %>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
-  <% end %>
-
-<div class="row p-3 m-3 ">
-    <% @orders.each do |order| %>
-      <% if order.status == "pending" %>
-        <div class="col-md-4">
-          <div class="card mb-3 card-orders  l-bg-blue-dark">
-            <div class="card-header">
-              <h5 class="card-title">
-                Order # <%= order.id %>
-              </h5>
-            </div>
-            <div class="card-body">
-              <ul class="">
-                <% order.foods.each do |food| %>
-                  <% if food.type == 'dish' %>
-                    <li class="">
-                      <%= food.name %>
-                    </li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <%= button_to order.status, update_status_path(order), method: :put, remote: true, data: { confirm: "Are you sure?" }, class: "btn btn-success btn-block" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+     <% end %>
 </div>
