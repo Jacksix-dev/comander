@@ -4,7 +4,7 @@
     <%= link_to tables_path, class: 'btn btn-primary mb-2 text-center' do %>
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
-    <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
+    <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align btn-aling' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
       <i class="fas fa-chevron-left"></i> Delete Table
     <% end %>
   </div>
@@ -23,15 +23,15 @@
   </div>
   <%= f.label :status, class: 'form-label' %>
   <%= f.select :status, Table.statuses.keys, {}, class: 'form-control' %>
-  <%= f.button :submit, class: 'btn btn-primary mb-3 mt-3', value: 'Update' %>
+  <%= f.button :submit, class: 'btn btn-primary mb-5 mt-3', value: 'Update' %>
 <% end %>
   <section class='buttons-container d-flex justify-content-between '>
         <% if @table.orders.any? %>
-          <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
+          <%= link_to new_table_order_path(@table), class: 'btn btn-info' do %>
           <i class="fas fa-edit"></i> Add Order
         <% end if current_user.id == @table.user_id %>
           <% else %>
-        <%= link_to new_table_order_path(@table), class: 'btn btn-warning' do %>
+        <%= link_to new_table_order_path(@table), class: 'btn btn-info' do %>
           <i class="fas fa-edit"></i> Open Table
         <% end if current_user.id == @table.user_id %>
           <% end %>
@@ -42,17 +42,31 @@
           <% end %>
         <% end %>
 
-        <%= link_to 'Close Table', close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <%= link_to close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' do %>
+          <i class="fa-regular fa-circle-xmark"></i> Close Table
+        <% end %>
     </section>
-            <h1 class='text-center'>Orders</h1>
+            <h1 class='text-center mt-4 mb-4'>Orders</h1>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
+            <% food_counts = {} %>
             <% order.selected_foods.each do |selected_food| %>
-                <h5 class="card-title">
-                  <%= selected_food.food.name %>
-                  <%= link_to "Borrar", selected_food_path(selected_food), data: { turbo_method: :delete } %>
-                </h5>
+              <% if food_counts.key?(selected_food.food_id) %>
+                <% food_counts[selected_food.food_id] += 1 %>
+              <% else %>
+                <% food_counts[selected_food.food_id] = 1 %>
+              <% end %>
             <% end %>
+
+              <#% food_counts.each do |food, quantity|  %>
+                <div class="show-orders-container d-flex justify-content-between">
+                  <#%= selected_food.food.name %>
+                  <#%= link_to selected_food_path(selected_food), data: { turbo_method: :delete } do %>
+                  <i class="btn fa-regular fa-circle-xmark"></i>
+                </div>
+              <#% end %>
+
+
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
               <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
               <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
