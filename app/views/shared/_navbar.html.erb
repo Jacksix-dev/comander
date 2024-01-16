@@ -9,27 +9,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Add Table", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "All Orders", orders_show_path, class: "nav-link" %>
-          </li>
+        <li class="nav-item active">
+          <%= link_to tables_path, class: "nav-link" do %>
+            <i class="fas fa-home"></i> Home
+          <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_table_path, class: "nav-link" do %>
+          <i class="fas fa-plus-circle"></i> Add Table
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to orders_show_path, class: "nav-link" do %>
+        <i class="fa-solid fa-money-bill-1"></i>Revenue
+        <% end %>
+      </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+              <%= image_tag "https://ca.slack-edge.com/T02NE0241-U064DBCQ6UU-e6526850e216-512", class: "avatar", alt: "dropdown menu" %>
             </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
           </li>
         <% else %>
           <li class="nav-item">
