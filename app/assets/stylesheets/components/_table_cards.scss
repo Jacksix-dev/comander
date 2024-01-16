@@ -32,7 +32,7 @@
 .card-circle:before {
   content: '';
   display: block;
-  padding-top: 100%; 
+  padding-top: 100%;
 }
 
 .card-circle-body {
@@ -101,4 +101,12 @@
 
 .card-circle.table-default {
   background-color: #e0e0e0; /* Default color for unknown status */
+}
+
+.btn-aling{
+  align-self: center;
+}
+
+.show-orders-container{
+
 }

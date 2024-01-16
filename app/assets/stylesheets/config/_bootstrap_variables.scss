@@ -16,7 +16,11 @@ $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
-$warning:    $orange;
+$warning:    $tomato;
+$verdoso:    $verdoso;
+
+
+
 
 // Buttons & inputs' radius
 $border-radius:    2px;
@@ -24,3 +28,11 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$theme-colors: (
+  "primary":    $primary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "verdoso":    $verdoso
+);
