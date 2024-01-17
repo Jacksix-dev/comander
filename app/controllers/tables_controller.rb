@@ -39,7 +39,7 @@ class TablesController < ApplicationController
 
   def update
     @table.update!(table_params)
-    redirect_to @table
+    redirect_to @table, notice: "The table was updated successfully"
   end
 
   def checkout
@@ -49,10 +49,10 @@ class TablesController < ApplicationController
 
   def close
     orders = @table.orders
-    orders.each do |order|
-      order.selected_foods.destroy_all
-    end
-    orders.destroy_all
+    # orders.each do |order|
+    #   order.selected_foods.destroy_all
+    # end
+    # orders.destroy_all
     @table.update!(customer_number: 0, status: 'empty')
     redirect_to tables_path, notice: 'Table closed successfully.'
   end

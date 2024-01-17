@@ -47,6 +47,8 @@
         <% end %>
     </section>
             <h1 class='text-center mt-4 mb-4'>Orders</h1>
+    <% if @table.status == "empty" %>
+          <% else %>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
             <% food_counts = order.selected_foods.group(:food_id).count %>
@@ -61,12 +63,13 @@
               </p>
             <% end %>
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
-              <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
+              <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),required: true ,data:{controller:'order-multiple'}, multiple: true %>
               <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
-              <%= f.submit "Add Food", class: 'btn btn-facundo' %>
+              <%= f.submit "Add Food", class: 'btn btn-facundo'%>
             <% end %>
           <% end %>
 
+        <% end %>
         <% end %>
       </div>
     </div>
