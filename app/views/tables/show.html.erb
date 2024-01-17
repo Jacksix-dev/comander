@@ -49,8 +49,8 @@
             <h1 class='text-center mt-4 mb-4'>Orders</h1>
     <% if @table.status == "empty" %>
           <% else %>
-        <% if @table.orders.any? %>
-          <% @table.orders.each do |order| %>
+        <% if @table.orders %>
+          <%  @table.orders.where(status: ["pending", "done"]).each do |order| %>
             <% food_counts = order.selected_foods.group(:food_id).count %>
             <% food_counts.each do |food_id, count| %>
               <% food = Food.find(food_id) %>
