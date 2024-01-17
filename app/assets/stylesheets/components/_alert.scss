@@ -1,6 +1,30 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
   z-index: 1000;
+  left: 50%;
+  top: 22px; /* Adjust the top position as needed */
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInOut 1s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.alert.alert-info {
+  background-color: #000;
+  color: #fff;
+}
+
+.alert.alert-warning {
+  background-color: #000;
+  color: #ffc107;
 }

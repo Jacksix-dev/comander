@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
       foods.each do |food|
         SelectedFood.create(order: @order, food_id: food)
       end
-      redirect_to tables_path, notice: "The order was successfully created"
+      redirect_to tables_path, notice: "The order was successfully created in table #{@table.number}"
     else
       render :new, status: :unprocessable_entity
     end
