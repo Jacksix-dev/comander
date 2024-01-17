@@ -4,7 +4,7 @@
     <%= link_to tables_path, class: 'btn btn-primary mb-2 text-center' do %>
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
-    <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align btn-aling' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
+    <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align btn-aling btn-lg' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
       <i class="fas fa-chevron-left"></i> Delete Table
     <% end %>
   </div>
@@ -13,10 +13,10 @@
     <span class="input-group-text" id="customer-count-label">Customers</span>
     <%= f.text_field :customer_number, type: 'number', class: 'form-control', id: 'customer-count-input', min: 0, data: { target: 'customer-counter.countInput' } %>
     <div class="input-group-append">
-      <button type="button" class="btn btn-outline-secondary" data-action="click->customer-counter#increment">
+      <button type="button" class="btn btn-outline-secondary btn-lg" data-action="click->customer-counter#increment">
         <i class="fas fa-plus"></i>
       </button>
-      <button type="button" class="btn btn-outline-secondary" data-action="click->customer-counter#decrement">
+      <button type="button" class="btn btn-outline-secondary btn-lg" data-action="click->customer-counter#decrement">
         <i class="fas fa-minus"></i>
       </button>
     </div>
@@ -27,22 +27,22 @@
 <% end %>
   <section class='buttons-container d-flex justify-content-between '>
         <% if @table.orders.any? %>
-          <%= link_to new_table_order_path(@table), class: 'btn btn-info' do %>
+          <%= link_to new_table_order_path(@table), class: 'btn btn-info btn-lg' do %>
           <i class="fas fa-edit"></i> Add Order
         <% end if current_user.id == @table.user_id %>
           <% else %>
-        <%= link_to new_table_order_path(@table), class: 'btn btn-info' do %>
+        <%= link_to new_table_order_path(@table), class: 'btn btn-info btn-lg' do %>
           <i class="fas fa-edit"></i> Open Table
         <% end if current_user.id == @table.user_id %>
           <% end %>
 
         <% if @table.orders.any? %>
-          <%= link_to checkout_table_path(@table), class: 'btn btn-success' do %>
+          <%= link_to checkout_table_path(@table), class: 'btn btn-success btn-lg' do %>
             <i class="fas fa-cash-register"></i> Checkout
           <% end %>
         <% end %>
 
-        <%= link_to close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' do %>
+        <%= link_to close_table_path(@table), method: :get, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-lg' do %>
           <i class="fa-regular fa-circle-xmark"></i> Close Table
         <% end %>
     </section>
@@ -53,17 +53,21 @@
             <% food_counts.each do |food_id, count| %>
               <% food = Food.find(food_id) %>
               <% last_selected_food = order.selected_foods.where(food: food).last %>
-              <p>
-                <span>
-                  <%= food.name %>: <%= count %>
+              <div class='d-flex justify-content-between mt-2 mb-2'>
+                <span class='fs-2'>
+                  <%= food.name %> ===> X<%= count %>
                 </span>
-                <%= link_to "-1", selected_food_path(last_selected_food), data: { turbo_method: :delete } %>
-              </p>
+                <%= link_to selected_food_path(last_selected_food),class: 'btn btn-outline-danger btn-lg', data: { turbo_method: :delete } do %>
+                  <i class="fa-solid fa-circle-xmark"></i>
+                <% end %>
+              </div>
             <% end %>
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
-              <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
-              <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
-              <%= f.submit "Add Food", class: 'btn btn-facundo' %>
+              <div class="">
+                <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ), class: 'fs-6 mt-2 mb-3 ', data:{controller:'order-multiple'}, multiple: true %>
+                <%= select_tag 'foods[]', options_for_select(@drinks.map { |food| [food.name, food.id] } ),class: 'fs-6 mt-2 mb-3 ' ,data:{controller:'order-multiple'}, multiple: true %>
+                <%= f.submit "Add Food", class: 'btn btn-facundo mt-3 btn-lg' %>
+              </div>
             <% end %>
           <% end %>
 
