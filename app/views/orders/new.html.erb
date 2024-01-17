@@ -1,13 +1,10 @@
 <%= simple_form_for [@table, @order] do |f| %>
   <%= f.association :waiter, collection: @waiter, selected: @waiter_default %>
-
   <%= label_tag 'foods', 'Foods', class: 'h3' %>
   <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ), data: { controller: 'order-multiple' }, multiple: true %>
-
   <div style="margin-top: 30px;">
     <%= label_tag 'drink', 'Drink', class: 'h3' %>
     <%= select_tag 'drinks[]', options_for_select(@drinks.map { |drink| [drink.name, drink.id] } ), data: { controller: 'order-multiple' }, multiple: true %>
   </div>
+  <%= button_tag 'Submit', class: 'btn btn-warning btn-lg mx-auto', style: 'margin-top: 40px; width: 100%; font-size: 1.5rem;' %>
 <% end %>
-
-<%= button_tag 'Submit', class: 'btn btn-warning btn-lg mx-auto', style: 'margin-top: 40px; width: 100%; font-size: 1.5rem;' %>

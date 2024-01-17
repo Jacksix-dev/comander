@@ -1,4 +1,7 @@
-<%= simple_form_for @table, method: :post do |f| %>
-  <%= f.input :number %>
-  <%= f.button :submit %>
-<% end %>
+<div class='ms-3 mt-3'>
+    <p class='text-center fs-3'>Create a new Table</p>
+  <%= simple_form_for @table, method: :post do |f| %>
+    <%= f.input :number, label: 'New Table Number' ,label_html: { class: 'fs-5' } %>
+    <%= f.button :submit, class: 'btn btn-primary btn-lg', style: ' width: 100%; font-size: 1.5rem;' %>
+  <% end %>
+</div>
