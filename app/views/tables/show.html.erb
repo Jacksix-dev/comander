@@ -53,12 +53,12 @@
             <% food_counts.each do |food_id, count| %>
               <% food = Food.find(food_id) %>
               <% last_selected_food = order.selected_foods.where(food: food).last %>
-              <p>
+              <div class='card'>
                 <span>
                   <%= food.name %>: <%= count %>
                 </span>
                 <%= link_to "-1", selected_food_path(last_selected_food), data: { turbo_method: :delete } %>
-              </p>
+              </div>
             <% end %>
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
               <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),data:{controller:'order-multiple'}, multiple: true %>
