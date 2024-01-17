@@ -2,10 +2,18 @@ class SelectedFoodsController < ApplicationController
   def create
     @order = Order.find(params[:order_id])
     foods = params[:foods]
+    mensaje = "You need to add a food to complete the action"
+    if !foods.nil?
       foods.each do |food|
-        SelectedFood.create(order: @order, food_id: food)
+        selected_food = SelectedFood.new(order: @order, food_id: food)
+        if selected_food.save
+          mensaje = "The food was added successfully"
+        else
+          mensaje = "There was an error, please add something"
+        end
       end
-    redirect_to table_path(@order.table)
+    end
+    redirect_to table_path(@order.table), notice: mensaje
   end
 
   def destroy

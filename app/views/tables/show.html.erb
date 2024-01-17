@@ -47,6 +47,8 @@
         <% end %>
     </section>
             <h1 class='text-center mt-4 mb-4'>Orders</h1>
+    <% if @table.status == "empty" %>
+          <% else %>
         <% if @table.orders.any? %>
           <% @table.orders.each do |order| %>
             <% food_counts = order.selected_foods.group(:food_id).count %>
@@ -71,6 +73,7 @@
             <% end %>
           <% end %>
 
+        <% end %>
         <% end %>
       </div>
     </div>
