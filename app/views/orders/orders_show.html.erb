@@ -1,17 +1,21 @@
 <h1>Total Orders of the Day</h1>
 
-<% @orders.each do |order| %>
-  <p>Waiter: <%= order.waiter.name %></p>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <% order.foods.each do |food| %>
-        <h5 class="card-title">
-          <%= food.name %>
-          <%= number_to_currency(food.price, unit: '$', precision: 2) %>
-        </h5>
-      <% end %>
+<div class="row">
+  <% @orders.each do |order| %>
+    <div class="col-md-4 mb-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <p>Waiter: <%= order.waiter.name %></p>
+          <% order.foods.each do |food| %>
+            <h5 class="card-title">
+              <%= food.name %>
+              <%= number_to_currency(food.price, unit: '$', precision: 2) %>
+            </h5>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <p>Total Amount of Orders of the Day: <%= number_to_currency(@total_amount, unit: '$', precision: 2) %></p>

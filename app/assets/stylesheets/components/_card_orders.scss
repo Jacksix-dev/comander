@@ -1,32 +1,38 @@
 .btn-custom:hover {
-    box-shadow: 0 8px 16px rgba(242, 240, 240, 0.2);
-  }
+  box-shadow: 0 8px 16px rgba(242, 240, 240, 0.2);
+}
 
-  .order-card {
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
-    border: none;
-    margin-bottom: 30px;
-    transition: all 0.3s ease-in-out;
-  }
+.order-card {
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+  border: none;
+  margin-bottom: 30px;
+  transition: all 0.3s ease-in-out;
+}
 
-  .order-card .card-block {
-    padding: 25px;
-  }
+.order-card .card-block {
+  padding: 25px;
+}
 
-  .order-card i {
-    font-size: 26px;
-  }
+.order-card i {
+  font-size: 26px; /* Tamaño de fuente para el ícono */
+}
 
-  .f-left {
-    float: left;
-  }
+/* Aumenta el tamaño de fuente para el texto dentro del botón y la tarjeta */
+.btn-custom,
+.card-title {
+  font-size: 18px; /* Ajusta el tamaño de fuente según tus preferencias */
+}
 
-  .f-right {
-    float: right;
-  }
+.f-left {
+  float: left;
+}
 
-  .bg-c-yellow {
-    background: linear-gradient(45deg, #FFB64D, #ffcb80);
-  }
+.f-right {
+  float: right;
+}
+
+.bg-c-yellow {
+  background: linear-gradient(45deg, #FFB64D, #ffcb80);
+}
