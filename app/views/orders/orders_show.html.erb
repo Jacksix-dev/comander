@@ -1,21 +1,54 @@
-<h1>Total Orders of the Day</h1>
+<h1 class='text-center'>Total Orders of the Day</h1>
 
-<div class="row">
-  <% @orders.each do |order| %>
-    <div class="col-md-4 mb-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <p>Waiter: <%= order.waiter.name %></p>
-          <% order.foods.each do |food| %>
-            <h5 class="card-title">
-              <%= food.name %>
-              <%= number_to_currency(food.price, unit: '$', precision: 2) %>
-            </h5>
-          <% end %>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-6">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="mb-4">
+                        <h5 class="card-title mb-0 fw-bolder">Revenue Today</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                <p class='fw-bolder'><%= number_to_currency(@total_amount, unit: '$', precision: 2) %></p>
+                            </h2>
+                        </div>
+                        <div class="col-4 text-right">
+
+                        </div>
+                    </div>
+                    <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                        <div class="progress-bar l-bg-cyan" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  <% end %>
 </div>
 
-<p>Total Amount of Orders of the Day: <%= number_to_currency(@total_amount, unit: '$', precision: 2) %></p>
+<p class='fs-4 text-center'>Total Amount of Orders of the Day:</p>
+<div class="d-flex >
+<% order_counter = 0 %>
+  <% @orders.each do |order| %>
+    <% if order.status == "counter" %>
+      <% order_counter += 1 %>
+      <div class="col-md-4 col-xl-3">
+        <div class="card bg-c-yellow order-card" style="margin-right: 10px;">
+          <div class="card-block text-center">
+            <h6 class="m-b-20">Orden #<%= order_counter %></h6>
+            <% order.foods.each do |food| %>
+
+                <h5 class="card-title text-center">
+                  <%= food.name %>
+                </h5>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+</div>
