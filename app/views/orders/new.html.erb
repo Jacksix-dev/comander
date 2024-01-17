@@ -8,6 +8,5 @@
     <%= label_tag 'drink', 'Drink', class: 'h3' %>
     <%= select_tag 'drinks[]', options_for_select(@drinks.map { |drink| [drink.name, drink.id] } ), data: { controller: 'order-multiple' }, multiple: true %>
   </div>
-<% end %>
-
 <%= button_tag 'Submit', class: 'btn btn-warning btn-lg mx-auto', style: 'margin-top: 40px; width: 100%; font-size: 1.5rem;' %>
+<% end %>

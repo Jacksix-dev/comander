@@ -1,6 +1,6 @@
 <section class="container">
       <h4 class="mt-4">Orders:</h4>
-      <% @orders.each_with_index do |order, index| %>
+      <% @orders.where(status: ["pending", "done"]).each_with_index do |order, index| %>
         <p>Order ID: <%= order.id %></p>
         <p>Waiter: <%= order.waiter.name %></p>
         <h5>Selected Foods:</h5>

@@ -49,10 +49,10 @@ class TablesController < ApplicationController
 
   def close
     orders = @table.orders
-    # orders.each do |order|
-    #   order.selected_foods.destroy_all
-    # end
-    # orders.destroy_all
+    orders.each do |order|
+      order.status = "counter"
+      order.save
+    end
     @table.update!(customer_number: 0, status: 'empty')
     redirect_to tables_path, notice: 'Table closed successfully.'
   end
