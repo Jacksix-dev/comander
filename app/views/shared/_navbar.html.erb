@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to tables_path, class: "navbar-brand" do %>
-      <%= image_tag "favicon-32x32.png" %>
+      <%= image_tag "android-chrome-192x192.png" %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,18 @@
               <i class="fa-solid fa-money-bill-1"></i> Revenue
             <% end %>
           </li>
+          <li class="nav-item hov log-out ">
+            <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link btn btn-custom" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> Log out
+            <% end %>
+          </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "https://ca.slack-edge.com/T02NE0241-U064DBCQ6UU-e6526850e216-512", class: "avatar", alt: "dropdown menu" %>
             </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My profile", "#", class: "dropdown-item" %>
+            </div>
           </li>
         <% else %>
           <li class="nav-item">

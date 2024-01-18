@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: #F95738;
   color: white;
+  position: sticky;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -11,23 +12,23 @@
 .navbar-lewagon .navbar-brand img {
   width: 50px;
   height: 50px;
-
+  margin-left: 12px;
 }
 
 @media screen and (min-width: 992px){
   .navbar .container-fluid, .navbar-expand-lg .navbar-collapse, .navbar-expand-lg .navbar-nav{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
   .navbar{
     width: 120px;
-    height: 110vh;
+    height: 99vh;
     align-items: flex-start;
   }
 }
 
 .nav-link{
-  font-size: 14px;
+  font-size: 8px;
 }
 
 .btn-custom {
@@ -41,6 +42,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 10px;
+  margin-top: 10px;
 }
 
 .btn-custom:hover {
@@ -51,4 +53,31 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.btn-secondary-nav{
+  background-color: #F95738;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  width: 150px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.btn-secondary-nav:hover {
+  background-color: #E64728;
+}
+
+.btn-secondary-nav,
+.card-title {
+  font-size: 15px; /* Ajusta el tamaño de fuente según tus preferencias */
+}
+
+.nav-itm .log-out{
+  bottom: 20px;
 }

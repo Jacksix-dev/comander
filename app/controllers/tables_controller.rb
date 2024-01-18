@@ -54,7 +54,7 @@ class TablesController < ApplicationController
       order.save
     end
     @table.update!(customer_number: 0, status: 'empty')
-    redirect_to tables_path, notice: 'Table closed successfully.'
+    redirect_to tables_path, notice: "Table #{@table.id} closed successfully."
   end
 
   def user_tables
