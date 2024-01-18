@@ -21,7 +21,7 @@
       </button>
     </div>
   </div>
-  <%= f.label :status, class: 'form-label' %>
+  <%= f.label :status, class: 'form-label fs-4' %>
   <%= f.select :status, Table.statuses.keys, {}, class: 'form-control fs-4' %>
   <%= f.button :submit, class: 'btn btn-primary mb-5 mt-3', value: 'Update' %>
 <% end %>

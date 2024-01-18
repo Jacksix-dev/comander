@@ -1,25 +1,25 @@
-<div class="d-flex flex-row">
+<div class="d-flex flex-wrap gap-3">
   <% order_counter = 0 %>
-  <% @orders.each do |order| %>
+  <% @orders.take(9).each do |order| %>
     <% if order.status == "pending" %>
       <% order_counter += 1 %>
-      <div class="col-md-4 col-xl-3">
+      <div class="col-3 mb-2">
         <div class="card bg-c-yellow order-card" style="margin-right: 10px;">
           <div class="card-block text-center">
-            <h6 class="m-b-20">Orden #<%= order_counter %></h6>
+            <h6 class="m-b-20">Orden #<%= order.id %></h6>
             <% order.foods.each do |food| %>
               <% if food.type == 'dish' %>
-                <h5 class="card-title text-center">
+                <h5 class="card-title text-center fs-3">
                   <%= food.name %>
                 </h5>
               <% end %>
             <% end %>
             <div class="text-center">
-              <%= button_to order.status, update_status_path(order), method: :put, remote: true,class: "btn btn-success btn-custom" %>
+              <%= button_to order.status, update_status_path(order), method: :put, remote: true,class: "btn btn-lorenzo mt-3 btn-lg", style: ' width: 100%; font-size: 1.5rem;' %>
             </div>
           </div>
         </div>
       </div>
     <% end %>
-     <% end %>
+    <% end %>
 </div>
