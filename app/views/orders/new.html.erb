@@ -1,10 +1,14 @@
+<div class='ms-3 mt-3'>
+  <p class='text-center fs-3'>Create a new order</p>
+
 <%= simple_form_for [@table, @order] do |f| %>
-  <%= f.association :waiter, collection: @waiter, selected: @waiter_default %>
-  <%= label_tag 'foods', 'Foods', class: 'h3' %>
-  <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ), data: { controller: 'order-multiple' }, multiple: true %>
-  <div style="margin-top: 30px;">
-    <%= label_tag 'drink', 'Drink', class: 'h3' %>
-    <%= select_tag 'drinks[]', options_for_select(@drinks.map { |drink| [drink.name, drink.id] } ), data: { controller: 'order-multiple' }, multiple: true %>
-  </div>
-  <%= button_tag 'Submit', class: 'btn btn-warning btn-lg mx-auto', style: 'margin-top: 40px; width: 100%; font-size: 1.5rem;' %>
+  <%= f.association :waiter, collection: @waiter, selected: @waiter_default, data:{controller:'order-multiple'}%>
+  <%#= label_tag 'waiter', 'Select a Waiter' %>
+  <%#= select_tag 'waiter', options_for_select(@waiter.map { |waiter| [waiter.name, waiter.id] } ),data:{controller:'order-multiple'}, multiple: true %>
+  <%= label_tag 'foods', 'Foods', class: 'fs-4 mt-1 mb-1' %>
+  <%= select_tag 'foods[]', options_for_select(@foods.map { |food| [food.name, food.id] } ),class: 'fs-4 mt-2 mb-3 p-1',data:{controller:'order-multiple'}, multiple: true %>
+  <%= label_tag 'foods', 'Drink', class: 'fs-4 mt-1 mb-1'%>
+  <%= select_tag 'foods[]', options_for_select(@drinks.map { |drink| [drink.name, drink.id] } ),class: 'fs-4 mt-1 mb-3 p-1',data:{controller:'order-multiple'}, multiple: true  %>
+  <%= f.button :submit, class: 'btn btn-facundo mt-3 btn-lg', style: ' width: 100%; font-size: 1.5rem;' %>
 <% end %>
+</div>
