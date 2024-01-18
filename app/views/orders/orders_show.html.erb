@@ -1,7 +1,5 @@
 <h1 class='text-center'>Total Orders of the Day</h1>
 
-
-
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-6">
@@ -28,27 +26,25 @@
             </div>
         </div>
     </div>
+
+
 </div>
 
-<p class='fs-4 text-center'>Total Amount of Orders of the Day:</p>
-<div class="d-flex >
-<% order_counter = 0 %>
-  <% @orders.each do |order| %>
-    <% if order.status == "counter" %>
-      <% order_counter += 1 %>
-      <div class="col-md-4 col-xl-3">
-        <div class="card bg-c-yellow order-card" style="margin-right: 10px;">
-          <div class="card-block text-center">
-            <h6 class="m-b-20">Orden #<%= order_counter %></h6>
-            <% order.foods.each do |food| %>
+<p class='fs-4 text-center'>Total Amount of Orders of the Day: <%= order_counter = 0 %></p>
 
-                <h5 class="card-title text-center">
-                  <%= food.name %>
-                </h5>
-            <% end %>
-          </div>
-        </div>
+<div class='d-flex flex-wrap gap-3 '>
+  <% @last_orders.take(12).each do |order| %>
+    <div class="card col-3 flex-fill mb-2">
+      <div class=''>
+          <p class='text-center fs-5'>Order #<%= order.id %></p>
       </div>
-    <% end %>
-<% end %>
+      <div class="card-body">
+        <%order.foods.each do |food| %>
+        <div>
+          <%= food.name %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
