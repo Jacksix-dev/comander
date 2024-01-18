@@ -30,19 +30,19 @@
 
 </div>
 
-<p class='fs-4 text-center'>Total Amount of Orders of the Day: <%= order_counter = 0 %></p>
+<p class='fs-4 text-center'>Total Amount of Orders of the Day: <%= @last_orders.count %></p>
 
-<div class='d-flex flex-wrap gap-2'>
+<div class='container d-flex justify-content-between flex-wrap gap-2'style='margin-right: auto; margin-left: auto;'>
   <% @last_orders.take(9).each do |order| %>
-    <div class="card col-3 mb-2">
-      <div class=''>
+    <div class="card col-3 ">
+
           <p class='text-center fs-5'>Order #<%= order.id %></p>
-      </div>
+
       <div class="card-body">
-        <%order.foods.take(3).each do |food| %>
-        <div>
-          <%= food.name %>
-        </div>
+        <% order.foods.take(3).each do |food| %>
+          <div>
+            <%= food.name %>
+          </div>
         <% end %>
 
       </div>
