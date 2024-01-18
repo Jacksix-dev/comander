@@ -43,7 +43,7 @@ class TablesController < ApplicationController
   end
 
   def checkout
-    @orders = @table.orders.includes(:selected_foods).order(created_at: :desc)
+    @orders = @table.orders.where(status: ["pending", "done"]).includes(:selected_foods).order(created_at: :desc)
     @total_prices = @orders.map { |order| order.selected_foods.joins(:food).sum('foods.price') }
   end
 
