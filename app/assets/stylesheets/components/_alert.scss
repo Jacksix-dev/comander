@@ -13,20 +13,22 @@
 @keyframes fadeInOut {
   0%, 100% {
     opacity: 1;
-
   }
   50% {
     opacity: 0.8;
-
   }
 }
 
 .alert.alert-info {
+
   background-color: #1E88E5;
+
   color: #fff;
 }
 
 .alert.alert-warning {
+
   background-color: #1E88E5;
+
   color: #ffc107;
 }
