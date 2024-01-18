@@ -5,12 +5,12 @@
       <i class="fas fa-chevron-left"></i> Back to List
     <% end %>
     <%= link_to table_path(@table.id), class: 'btn btn-outline-danger mb-2 text-align btn-aling btn-lg' , data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to permanently delete this table?' } do %>
-      <i class="fas fa-chevron-left"></i> Delete Table
+      <i class="fa-solid fa-trash"></i> Delete Table
     <% end %>
   </div>
 <%= form_with(model: @table, url: table_path(@table), method: :patch, class: 'customer-status-form', data: { controller: 'customer-counter' }) do |f| %>
   <div class="input-group mb-3">
-    <span class="input-group-text" id="customer-count-label">Customers</span>
+    <span class="input-group-text fs-4" id="customer-count-label">Customers</span>
     <%= f.text_field :customer_number, type: 'number', class: 'form-control', id: 'customer-count-input', min: 0, data: { target: 'customer-counter.countInput' } %>
     <div class="input-group-append">
       <button type="button" class="btn btn-outline-secondary btn-lg" data-action="click->customer-counter#increment">
@@ -22,7 +22,7 @@
     </div>
   </div>
   <%= f.label :status, class: 'form-label' %>
-  <%= f.select :status, Table.statuses.keys, {}, class: 'form-control' %>
+  <%= f.select :status, Table.statuses.keys, {}, class: 'form-control fs-4' %>
   <%= f.button :submit, class: 'btn btn-primary mb-5 mt-3', value: 'Update' %>
 <% end %>
   <section class='buttons-container d-flex justify-content-between '>
@@ -55,14 +55,16 @@
             <% food_counts.each do |food_id, count| %>
               <% food = Food.find(food_id) %>
               <% last_selected_food = order.selected_foods.where(food: food).last %>
-              <div class='d-flex justify-content-between mt-2 mb-2'>
-                <span class='fs-2'>
-                  <%= food.name %> ===> X<%= count %>
-                </span>
-                <%= link_to selected_food_path(last_selected_food),class: 'btn btn-outline-danger btn-lg', data: { turbo_method: :delete } do %>
-                  <i class="fa-solid fa-circle-xmark"></i>
-                <% end %>
-              </div>
+                <div class='d-flex justify-content-between mt-2 mb-2 border-bottom border-light'>
+                  <div class='d-flex align-items-center'>
+                    <span class='fs-2'>
+                      <%= food.name %> <span class="">X<%= count %></span>
+                    </span>
+                  </div>
+                  <%= link_to selected_food_path(last_selected_food), class: 'btn btn-outline-danger btn-lg', data: { turbo_method: :delete } do %>
+                    <i class="fa-solid fa-circle-xmark"></i>
+                  <% end %>
+                </div>
             <% end %>
             <%= simple_form_for [order, SelectedFood.new] do |f| %>
               <div class="">
