@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   def orders_show
     @order_counter = 0
     @orders = Order.all
-    @last_orders = @orders.reverse.select{|order| order.status == 'counter'}
+    @last_orders = @orders.reverse.select { |order| order.status == 'counter' }
     @total_amount = @orders.sum { |order| order.foods.sum(&:price) }
   end
 
