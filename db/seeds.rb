@@ -63,6 +63,31 @@ Food.create(
 )
   end
 
+  Food.create(
+    name: 'Milanesa Con Pure',
+    price: 4200,
+    type:'dish'
+  )
+
+  Food.create(
+    name: 'Hamburguesa de la casa',
+    price: 4200,
+    type:'dish'
+  )
+
+  Food.create(
+    name: 'Coca-Cola',
+    price: 4200,
+    type:'drink'
+  )
+
+  Food.create(
+    name: 'Agua',
+    price: 4200,
+    type:'drink'
+  )
+
+
   10.times do
     Food.create(
       name: Faker::Beer.brand,
