@@ -83,6 +83,25 @@
   transition: background-color 0.3s;
 }
 
+.btn-facundo:hover {
+  background-color: #4099ff;
+}
+
+.btn-lorenzo {
+  background-color: #F95738;
+  color: #fff;
+  border: none;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+.btn-lorenzo:hover{
+  background-color: #F80100;
+}
 .btn-primary:hover {
   background-color: #45a049; /* Darker green on hover */
 }
