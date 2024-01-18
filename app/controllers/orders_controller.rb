@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
   end
 
   def orders_show
-
     @orders = Order.all
     @last_orders = @orders.select{|order| order.status == 'counter'}
     @total_amount = @orders.sum { |order| order.foods.sum(&:price) }
