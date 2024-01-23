@@ -14,10 +14,13 @@
               <i class="fas fa-home"></i> Home
             <% end %>
           </li>
+          <% if current_user.role == 'admin' %>
           <li class="nav-item hov">
             <%= link_to new_table_path, class: "nav-link btn btn-custom" do %>
               <i class="fas fa-plus-circle"></i> Add Table
             <% end %>
+          <% end  %>
+
           </li>
           <li class="nav-item hov">
             <%= link_to orders_show_path, class: "nav-link btn btn-custom" do %>
